@@ -1,1 +1,648 @@
 
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>CascadiaJS 2012</title>
+  <meta name="description" content="A community run JavaScript conference in Seattle, WA.">
+  <!-- <meta name="viewport" content="width=device-width"> -->
+
+  <link rel="stylesheet" href="asset/css/site.css">
+  <script src="asset/js/vendor/modernizr-2.6.2.min.js"></script>
+  <script>
+  /*
+                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                               
+                                                                                                                                       dddddddd                                                                                                
+                                       CCCCCCCCCCCCC                                                                                   d::::::d  iiii                             JJJJJJJJJJJ   SSSSSSSSSSSSSSS                                
+                                    CCC::::::::::::C                                                                                   d::::::d i::::i                            J:::::::::J SS:::::::::::::::S                               
+                                  CC:::::::::::::::C                                                                                   d::::::d  iiii                             J:::::::::JS:::::SSSSSS::::::S                               
+                                 C:::::CCCCCCCC::::C                                                                                   d:::::d                                    JJ:::::::JJS:::::S     SSSSSSS                               
+                                C:::::C       CCCCCC  aaaaaaaaaaaaa      ssssssssss       cccccccccccccccc  aaaaaaaaaaaaa      ddddddddd:::::d iiiiiii   aaaaaaaaaaaaa              J:::::J  S:::::S                                           
+                               C:::::C                a::::::::::::a   ss::::::::::s    cc:::::::::::::::c  a::::::::::::a   dd::::::::::::::d i:::::i   a::::::::::::a             J:::::J  S:::::S                                           
+                               C:::::C                aaaaaaaaa:::::ass:::::::::::::s  c:::::::::::::::::c  aaaaaaaaa:::::a d::::::::::::::::d  i::::i   aaaaaaaaa:::::a            J:::::J   S::::SSSS                                        
+                               C:::::C                         a::::as::::::ssss:::::sc:::::::cccccc:::::c           a::::ad:::::::ddddd:::::d  i::::i            a::::a            J:::::j    SS::::::SSSSS                                   
+                               C:::::C                  aaaaaaa:::::a s:::::s  ssssss c::::::c     ccccccc    aaaaaaa:::::ad::::::d    d:::::d  i::::i     aaaaaaa:::::a            J:::::J      SSS::::::::SS                                 
+                               C:::::C                aa::::::::::::a   s::::::s      c:::::c               aa::::::::::::ad:::::d     d:::::d  i::::i   aa::::::::::::aJJJJJJJ     J:::::J         SSSSSS::::S                                
+                               C:::::C               a::::aaaa::::::a      s::::::s   c:::::c              a::::aaaa::::::ad:::::d     d:::::d  i::::i  a::::aaaa::::::aJ:::::J     J:::::J              S:::::S                               
+                                C:::::C       CCCCCCa::::a    a:::::assssss   s:::::s c::::::c     ccccccca::::a    a:::::ad:::::d     d:::::d  i::::i a::::a    a:::::aJ::::::J   J::::::J              S:::::S                               
+                                 C:::::CCCCCCCC::::Ca::::a    a:::::as:::::ssss::::::sc:::::::cccccc:::::ca::::a    a:::::ad::::::ddddd::::::ddi::::::ia::::a    a:::::aJ:::::::JJJ:::::::J  SSSSSSS     S:::::S                               
+                                  CC:::::::::::::::Ca:::::aaaa::::::as::::::::::::::s  c:::::::::::::::::ca:::::aaaa::::::a d:::::::::::::::::di::::::ia:::::aaaa::::::a JJ:::::::::::::JJ   S::::::SSSSSS:::::S                               
+                                    CCC::::::::::::C a::::::::::aa:::as:::::::::::ss    cc:::::::::::::::c a::::::::::aa:::a d:::::::::ddd::::di::::::i a::::::::::aa:::a  JJ:::::::::JJ     S:::::::::::::::SS                                
+                                       CCCCCCCCCCCCC  aaaaaaaaaa  aaaa sssssssssss        cccccccccccccccc  aaaaaaaaaa  aaaa  ddddddddd   dddddiiiiiiii  aaaaaaaaaa  aaaa    JJJJJJJJJ        SSSSSSSSSSSSSSS                                  
+                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                               
+                                              .MMD                                                                                                                                                                                             
+                                           ..~M.. M..  .MM$..                                                                                                                                                                                  
+                                         .OMMI?  . M~$M$7I78...                                                                                                                                                                                
+                                      .=DM7777. ..  NM777777OMM.                                                                                                                                                                               
+                                   ..78777I77:. .     MM777I7II$?...                                                                                                                                                                           
+                                 .OMZI7I7777I7..... .  .~MM$II  ..IM$.                                                                                                                                                                         
+                               NMZ7I7I777777777I=~. :=~.  . $D. .   ~NMI~.                                                                                                                                                                     
+                          ...8M7777777777777777777I7777?   .  .D.    ...IM~..                                                                                                         .  ...                                                   
+                        .?MD7777I777777777777777I777777+     .  ..M~.... 77DNM87I                                                                                                  ..OMNMZ++MMI                                                
+                      :MD7I7777777777777777777777777777I . .  ......ZM~=II77I77787.                                                                                             . ~MOI7.Z8, ,M...                                              
+              ?MMMMMMM7I77I7777777777777777777777777777. .      .    ...MMMO8M77I7MZ~                                                                                        ..:O$M777I.?7I7 ...8M+.                                           
+         ~M7I777777777777777777777777I777$777II777777777=.            ?77777777M$I7: ZD...                                                                                  =MM ..I77. .7I777,  . 8~..                                         
+     =MO777II77777777777777777777777DND77IZMNMZ7I7777777I7: .    .  .II7777777I7IN7. ..:I:DO.                                                                           . .+N.   77,.  II7.~II..,I7.ZM$IM8                                    .
+.MM8$I77777777777777777777777I777N$77777777777I7DMZII777I .    . . .?~ .7777777777777D7.....I8I.                                                                    . .MMN7..  7 . .7.?, .7II.. 777. ...+M..                               7MM,
+7777I7777777777777777777I777OMDI7I777777777777777777IINMI ..+II7+ .I77777I777777I777777I$M$=.  7MIONI . ~~.IMM8OMN                                               ..+MM$7II?.I7+I=.~77.=I  . 7,. . ?....  .. .NM.              .....O$~7MMM~ ...
+7777777777777777I77777I77M7777777777777777777?+777I77777$MO77I7,...,,.:7777777777777777777I77778MM7MNO77777+ ... ~MMMMMM ....                                  .:MM...7I77?.. . .7+. ,?. ... 7.   .. .  .   ..+MO+:,7Z:,,+I:,?OMMN77777777,. ..
+77777777777777I77I7ZM877777777I777777777777I.  .I7I777777I77777I.. .:ZMN$77777777ZZ$7777D8$7II7II7I77777I7?.       ..   ~?ZMN$~.                         .. MMM:  . .77??~. . .I+:?77.~.   . 7....7,.  .      ...+M7II777I777I7II7777II77777+II
+77I77I777777777ON87777777777777777777777777I~.   .777777?...~7777777.    .   =II77777777777777777777777777.,.7.    ..  ..  .. ~IZNMMMMDOMM$.           .7MZ+. .....~7.. . . .?7:=777=.. .77.  ?  .?777 . .       . .ZMMN7I7I77777777777777777. 
+77777777777MM77777II7777777777777777777777777.   .I77777 . .. .77I7I77~... . ..::7777777777777777777777777:: ~I. +7I..      .. .~ .I+,..... :++:,:MMMMN$77~  :I  .,... . ..., ~7777?.... .I7:..I   ~777...        ....  =NMO7I7I7777777777777I=
+7OM8777777I777777777777777777777777777777777I..... 777I,....... 77777777777?7 ~7777777777777777777777777I??7I  ..IIIII..    . =MM~?.IIII7I8OIM8O$I7777777I~....777I+. ..?I. .III7I~... . .77I=  .. .+I77: ....... .   .. . ..ZMI7I777777777777:
+77777777777I77777777777777777777777777777777=     ..77I.... .77I?77777777777I7II7777777777777777777777I7...   .. .777?.=.....N8MMMZ77777777IIII7II777777777777I.  ...,I7+7  =7I77. 77I .=7777I...  ......     . . ,,..: .. .   .,MM777777777I:.
+77777777777777777777777777777777777777II777I.   7III7777777,..I7777777777777777777777777777777I7$I7777?. MN:III7=?..I8$77I77IMMMMD7II77777777777+I7I777II:.. ?7 ....777?7+ ,7=7777III77.+7777?. .7777I7I...:..  .. .:I7II7+.   .. .,M8777777777
+777777777777777777777777777777777777777?,,:....  ?7777777I7I77777777777777777777777777777777777MMMM7I. .+MM7I77777OM7I777I77IIMMMM$MO7777777777777. ..   .II77I77777I77777I..77777II7:,I7777I+ ,I7777I7II7I7+.   .   .  III77..  ?... ...INMDDM
+777777777777777777777777I77777777777777 . .I77I.+77777777777777777777777777777777777777777777MMMMMN. .,MMMMZ77I77O77777I77II7IMMMMMMZ77I7777I777Z:. ,~I777777777777II777777777777777777I77777..+7777777777777I.I7777I?7I..I7 ..=I....     .7777
+77777777777777777777777II7I777777777777 . .I7777I777777777777777777777777777777777777777777IO87MMMMN77MMMMMMMMDI77778N$$I?$MMMMMMMMMM777777777ZMMNI777I7N777777I7II777777777I777I77777777777777777777777777777I777777777II7I.....  ... ...    .
+7I7I77I7I77I7777777I7II$?III777I7I7I7I7 ...,7I77I7777777777777I7I7II777777777I7I7I777$$777IIMDOMMMDM7I7MMMMMMMMII?77MMMM7$I8MMMMMM7M77++777I77MMMMZ7777ZM8II777?$MMMM8777777$+I77777777I7I77II7I7I7777777777777I7777D7777777777..  .    .      
+7I777I77I7?+$?$7777I7I7$?I77I777I7I7I7?777777I77I7777777777777I78M7I777777777777IIMMMMMM77I788MMMMMMO7MMMMMMMMM7?ZZ7MMMO?+?$O$NMMMMD77+?7I7I7OMMMNZII7MMMM7Z777?O8OMMM77III7$?I77II77I7I77??777I7I77I7II77777777DMMM$77777777777?I? ......     
+I+???$77O8+???++77????I$????+77$??+?$?+?+I+???$$+?+MMM777777777MMMMM7I77777I7I7INMMMMMZ7777$NMMMMMMMMM7MMMMMMMDI$MOO8OOMM$???O8MMD8??+?+7?O??7N88OI$7I?O88MN?????OO88M$???+I$????777$7O8$M???7I????7$???777777777MMMMM7I7I77I777777I~7777I   . 
++I7$??+DMN??$+$77+?$7Z78OOO$OMD?$7$??7+$I?I7$++?OMDMMMZI777I777MMMMO77I777777I777MMMMMMM7IDMMMMMMMMMM87MMMMMMM7?778O8OOM7II$+?7MM8OOD?????MOZ?+NMM???OMMMO8O7DNOO88MMMOOM8I+??+7I?$+?NNMO8OZ7?+$7$?++?$I7I7777$MMMMMMMNMMMII7777777III77II~,...
+?I77I+$O88++$?$7$?77MMO8O8MM8O88NIIZ?I+$++I777?O888MMZ777777MMMMMMMMMM7777777I7INMMMMMMM777NMMO7MMMMMZMMMMMMMI7?778OONNM7777??77NOMMO7I7?M8NMO8MMM$+??7MMNON??ZO88OMMMODMMM++$DMMOIZOMMMOOOZ7?+7I77+$+??7II7777M8MMMMMMMMM777I7II777MMM7777I77?
+8IZ7+??M8O8$$+$$$??OND8NO8MMMOO88MZ+?$IMD??Z7+?8M8OMM77I777MMMMMMMMMN7I777777I777MMMMMMM77II777MMMMMMM8MMMMMMO77$78OOO8NDD?N888MM88MN?ON8IMNO888NZ??7ODM8O88Z?ZO8DOMMMO8DN7?OODMM8??Z8MD88O+Z?+7Z?+??$??77777I$NMMMMMMMMMM77I7777I7MMMM777II777
+MZ7?$7Z88M8+7$+?$?$OIOMM88MMM8OMOOZ7IIDOO$??+$DNOOMMMOII7IIMMMMMMMMZ7777I7777777777MMMMM7IO77MMMMMMM77MMMMMMMMMMD$??8OODM$+?+$8MMMNOODMMMD88N8ODO8NMMMO8OMMDZ8MO8MNO8MO8O$INMODMMMOOMOO8MMMD8NMOO?ZI$IOMDO77MMMMMMMMMMMMMM7777IMDZMMMMMMMM8D ..
+MMMM77MMMMIDIIDO$+II8MMMMMMMMMMMMMMMMMMMMMMMO7IMMMMM87NM$7I8MMMMMMMMMM7I7777877IOMMMMMMMMMDO7MMMMMDDN7MMMMMMMMMMMMNMMMMMMMM8MMMMMMMMMMMMMMMMMOOMMMMMMMDDMMMMMMMMMMMMMM88MMMMMMMMMMMMMMMMMMMMMMMMMMOMMMMMMMMMDMMMMDNMMMMM$7MIMMMMMMMMMMMMMMMM+M$
+MMMM77OMMMMMMMM77MNMMMMMMMMMMMMMMMMMMMMMMMMMMNZMMMMMMMMMMOIIOMMMMMMMMNMMMZM$M88MMMMMMMMMMMMNMMMMMMMMMMMMMMMMMMMMMMMMDOO88NMMMMMMMMMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO8OOOOOMMNOOONMMMMDOOOOOOOOOOO8DNMMNOOODMMMMNOOOOOODMMMMMMMMMMMMMMMDMMMMMMM:N
+MMMMI77MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMOOOOOOMMMMMMMMMMMMMMMMMMMMMMMMMMMOOOOMMMMMMMMMMMN8DMMMMOOOOOMMMMNOOOOO8DZOOOOOO8OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOMDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOODMMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMNMMMMMMMMMMMMMMMMMMMMDOOOOONMMDOOOOOOOOOOOOOOOOOOOOOOOOOONMMMMMM8OOOOOO8DOOODDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOZOOO8MMMMMOOOOOOOO
+MMMMMMMMMMMMMMMMMMOOOOOOOOOOO88DDDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+*/
+  </script>
+</head>
+<body>
+
+  <header class="header clearfix">
+
+    <div class="l-constrained">
+
+        <h1 class="logotype"><a href="/">Cascadia<span class="logotype-accent">JS</span></a></h1>
+        <h2 class="tagline">November 8 &ndash; 9, 2012 / Seattle, WA</h2>
+
+        <div class="buttons">
+          <a class="btn" href="/videos.html">Videos</a>
+          <a class="social twitter ir" href="https://twitter.com/cascadiajs" title="Follow us on Twitter">Twitter</a>
+        </div>
+
+    </div>
+
+  </header>
+
+  <div class="scroller">
+
+    <section>
+
+      <div class="sct-break"><h2 class="l-constrained sct-head" id="about-us">About Us</h2></div>
+
+      <div class="l-constrained clearfix">
+
+        <div class="l-single first">
+          <img class="logo inset" alt="CascadiaJS logo" src="asset/img/logo.png">
+        </div>
+
+        <div class="l-double">
+
+          <p class="kicker">The world of JavaScript has moved beyond the browser.</p>
+
+          <p>Node.js has taken server-side application developers by storm and helped to blur the line between website and web application.  Windows 8 is the first major operating system to make JS a first-class citizen when developing native applications.  Mozilla is pushing the boundaries of mobile with Firefox OS, a mobile OS that is fully powered by the web.</p>
+
+          <p>CascadiaJS is bringing together these topics and more in order to survey where JS is today and where it is going tomorrow.</p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section>
+
+      <div class="sct-break"><h2 class="l-constrained sct-head" id="speakers">Speakers</h2></div>
+
+      <div class="l-constrained">
+
+        <ul class="l-column lineup clearfix">
+          <li class="lineup-block">
+            <a href="https://github.com/cascadiajs/cascadiajs.github.com/blob/master/proposal/making-robots-walk_rwldrn.md" title="More Information">
+              <img class="lineup-img" src="asset/img/rickwaldron.jpg" alt="Rick Waldron">
+              <h3 class="lineup-name">Rick Waldron</h3>
+              <p class="lineup-text">JavaScript Evangelist</p>
+            </a>
+          </li>
+          <li class="lineup-block">
+            <a href="https://github.com/cascadiajs/cascadiajs.github.com/blob/master/proposal/reactive-html-with-meteor_dgreensp.md" title="More Information">
+              <img class="lineup-img" src="asset/img/dgreenspan.jpg" alt="David Greenspan">
+              <h3 class="lineup-name">David Greenspan</h3>
+              <p class="lineup-text">Meteor author &amp; creator of Etherpad</p>
+            </a>
+          </li>
+          <li class="lineup-block">
+            <a href="https://twitter.com/nexxylove" title="More Information">
+              <img class="lineup-img" src="asset/img/emilyrose.jpeg" alt="Emily Rose">
+              <h3 class="lineup-name">Emily Rose</h3>
+              <p class="lineup-text">Makes Magic Happen with JS &amp; Hardware</p>
+            </a>
+          </li>
+          <li class="lineup-block">
+            <a href="https://twitter.com/angelinamagnum" title="More Information">
+              <img class="lineup-img" src="asset/img/angelinafabbro.jpg" alt="Angelina Fabbro">
+              <h3 class="lineup-name">Angelina Fabbro</h3>
+              <p class="lineup-text">Programming &amp; Cognitive Science Geek</p>
+            </a>
+          </li>
+          <li class="lineup-block">
+            <a href="https://github.com/cascadiajs/cascadiajs.github.com/blob/master/proposal/dont_cross_the_streams-mattpodwysocki.md" title="More Information">
+              <img class="lineup-img" src="asset/img/mattpodwysocki.png" alt="Matt Podwysocki">
+              <h3 class="lineup-name">Matt Podwysocki</h3>
+              <p class="lineup-text">Maintainer of RxJS</p>
+            </a>
+          </li>
+          <li class="lineup-block">
+            <a href="https://github.com/cascadiajs/cascadiajs.github.com/blob/master/proposal/distributed-programming-for-kids_dominictarr.md" title="More Information">
+              <img class="lineup-img" src="asset/img/dominictarr.png" alt="Dominic Tarr">
+              <h3 class="lineup-name">Dominic Tarr</h3>
+              <p class="lineup-text">JavaScript Meta-haxx</p>
+            </a>
+          </li>
+          <li class="lineup-block">
+            <a href="https://github.com/cascadiajs/cascadiajs.github.com/blob/master/proposal/lodash-for-a-better-utility-belt_jdalton.md" title="More Information">
+              <img class="lineup-img" src="asset/img/jdalton.png" alt="John-David Dalton">
+              <h3 class="lineup-name">John-David Dalton</h3>
+              <p class="lineup-text">JavaScript Tinkerer, Bug Fixer &amp; Benchmark Runner</p>
+            </a>
+          </li>
+          <li class="lineup-block">
+            <a href="https://github.com/cascadiajs/cascadiajs.github.com/blob/master/proposal/sailing-at-midnight-kitcambridge.md" title="More Information">
+              <img class="lineup-img" src="asset/img/kitcambridge.png" alt="Kit Cambridge">
+              <h3 class="lineup-name">Kit Cambridge</h3>
+              <p class="lineup-text">Engineer at Voxer</p>
+            </a>
+          </li>
+          <li class="lineup-block">
+            <a href="https://github.com/cascadiajs/cascadiajs.github.com/blob/master/proposal/big-data-real-time_ineeman.md" title="More Information">
+              <img class="lineup-img" src="asset/img/ineeman.png" alt="Itay Neeman">
+              <h3 class="lineup-name">Itay Neeman</h3>
+              <p class="lineup-text">Splunker</p>
+            </a>
+          </li>
+          <li class="lineup-block">
+            <a href="https://github.com/cascadiajs/cascadiajs.github.com/blob/master/proposal/learn-from-the-masters_topfunky.md" title="More Information">
+              <img class="lineup-img" src="asset/img/topfunky.jpeg" alt="Geoffrey Grosenbach">
+              <h3 class="lineup-name">Geoffrey Grosenbach</h3>
+              <p class="lineup-text">Creator of Peepcode</p>
+            </a>
+          </li>
+          <li class="lineup-block">
+            <img class="lineup-img" src="asset/img/chriswilliams.jpg" alt="">
+            <h3 class="lineup-name">Chris Williams</h3>
+            <p class="lineup-text">JSConf's Daddy</p>
+          </li>
+          <li class="lineup-block">
+            <img class="lineup-img" src="asset/img/sintaxi.jpg" alt="">
+            <h3 class="lineup-name">Brock Whitten</h3>
+            <p class="lineup-text">Co-creator of PhoneGap</p>
+          </li>
+          <li class="lineup-block">
+            <img class="lineup-img" src="asset/img/jden.png" alt="">
+            <h3 class="lineup-name">Jason Denizac</h3>
+            <p class="lineup-text">Political Scientist &amp; JavaScript hacker</p>
+          </li>
+          <li class="lineup-block">
+            <img class="lineup-img" src="asset/img/domenic.jpg" alt="">
+            <h3 class="lineup-name">Domenic Denicola</h3>
+            <p class="lineup-text">Writing desktop apps in JS before it was cool</p>
+          </li>
+          <li class="lineup-block">
+            <img class="lineup-img" src="asset/img/merrick.jpg" alt="">
+            <h3 class="lineup-name">Merrick Christensen</h3>
+            <p class="lineup-text">JavaScript developer at Domo</p>
+          </li>
+          <li class="lineup-block">
+            <img class="lineup-img" src="asset/img/bergman.jpg" alt="">
+            <h3 class="lineup-name">Matthew Bergman</h3>
+            <p class="lineup-text">An expat from the Ruby world</p>
+          </li>
+          <li class="lineup-block">
+            <img class="lineup-img" src="asset/img/crcastle.png" alt="">
+            <h3 class="lineup-name">Chris Castle</h3>
+            <p class="lineup-text">Tinkers with APIs while consuming IPAs</p>
+          </li>
+          <li class="lineup-block">
+            <img class="lineup-img" src="asset/img/chewbranca.png" alt="">
+            <h3 class="lineup-name">Russell Branca</h3>
+            <p class="lineup-text">Specializes in data driven JS apps &amp; visualizations</p>
+          </li>
+          <li class="lineup-block">
+            <img class="lineup-img" src="asset/img/molant.png" alt="">
+            <h3 class="lineup-name">Anton Molleda</h3>
+            <p class="lineup-text">Windows 8 developer at Plain Concepts</p>
+          </li>
+          <li class="lineup-block">
+            <img class="lineup-img" src="asset/img/halffullheart.png" alt="">
+            <h3 class="lineup-name">Daniel Worthington</h3>
+            <p class="lineup-text">Product design &amp; development at Simply Measured</p>
+          </li>
+          <li class="lineup-block">
+            <img class="lineup-img" src="asset/img/adam.png" alt="">
+            <h3 class="lineup-name">Adam Christian</h3>
+            <p class="lineup-text">Works for Sauce Labs, geeks out on JS, browser testing &amp; linguistics</p>
+          </li>
+          <li class="lineup-block">
+            <img class="lineup-img" src="asset/img/jon.jpg" alt="">
+            <h3 class="lineup-name">Jonathan Turner</h3>
+            <p class="lineup-text">Work on the Microsoft TypeScript team</p>
+          </li>
+          <li class="lineup-block">
+            <img class="lineup-img" src="asset/img/tomrud.png" alt="">
+            <h3 class="lineup-name">Tom Rudick</h3>
+            <p class="lineup-text">A Windows Azure engineer who spends most of his time pretending to be a grown-up</p>
+          </li>
+        </ul>
+
+      </div>
+
+    </section>
+
+    <section>
+
+      <div class="sct-break"><h2 class="l-constrained sct-head" id="agenda">Agenda</h2></div>
+
+      <div class="l-constrained clearfix">
+
+        <p class="agenda-party l-triple first">Pre-Party with <a href="http://substantial.com/"><img src="asset/img/substantial.png" alt="Substantial" style="width: 400px; margin-left: 6px; position: relative; top: -2px;"></a></p>
+
+        <h3 class="agenda-head l-single first">Day One / Nov 8
+          <span class="agenda-sponsor">Presented by <a href="http://aka.ms/cascadiajs"><img src="asset/img/azure-small.png" alt="Microsoft Azure"></a></span>
+        </h3>
+
+        <table class="agenda l-double">
+          <tbody>
+            <tr>
+              <td class="agenda-time">8:00 - 9:00</td>
+              <td><b>Registration and Breakfast by <a href="http://eltana.com/"><img src="asset/img/eltana-small.png" alt="Eltana"></a> and <a href="http://www.toppotdoughnuts.com/index.html"><img src="asset/img/toppot-small.png" alt="Top Pot"></a></b></td>
+            </tr>
+            <tr>
+              <td class="agenda-time">9:30 - 9:45</td>
+              <td>Kick-off</td>
+            </tr>
+            <tr>
+              <td class="agenda-time">9:45 - 10:40</td>
+              <td>browser.js</td>
+            </tr>
+            <tr>
+              <td class="agenda-time">10:40 - 11:00</td>
+              <td><b>Break</b></td>
+            </tr>
+            <tr>
+              <td class="agenda-time">11:00 - 12:00</td>
+              <td>bigdata.js</td>
+            </tr>
+            <tr>
+              <td class="agenda-time">12:00 - 14:00</td>
+              <td><b>Lunch with <a href="http://twilio.com/"><img src="asset/img/twilio-small.png" alt="Twilio"></a> by <a href="http://www.skilletstreetfood.com/"><img src="asset/img/skillet.png" alt="Skillet"></a></b></td>
+            </tr>
+            <tr>
+              <td class="agenda-time">14:00 - 16:00</td>
+              <td>apps.js</td>
+            </tr>
+            <tr>
+              <td class="agenda-time">16:00 - 16:30</td>
+              <td><b>Break</b></td>
+            </tr>
+            <tr>
+              <td class="agenda-time">16:30 - 17:30</td>
+              <td>realtime.js</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="agenda-party l-triple first">Party with <a href="http://msdn.com/ie"><img src="asset/img/ie.png" alt="Internet Explorer" style="width: 200px; margin-left: 6px;"></a></p>
+
+        <h3 class="agenda-head l-single first">Day Two / Nov 9
+          <span class="agenda-sponsor">Presented by <a href="https://skydrive.live.com"><img src="asset/img/skydrive-small.png" alt="SkyDrive"></a></span>
+        </h3>
+
+        <table class="agenda l-double">
+          <tbody>
+            <tr>
+              <td class="agenda-time">8:00 - 9:00</td>
+              <td><b>Breakfast by <a href="http://eltana.com/"><img src="asset/img/eltana-small.png" alt="Eltana"></a> and <a href="http://www.toppotdoughnuts.com/index.html"><img src="asset/img/toppot-small.png" alt="Top Pot"></a></b></td>
+            </tr>
+            <tr>
+              <td class="agenda-time">9:00 - 10:20</td>
+              <td>systems.js</td>
+            </tr>
+            <tr>
+              <td class="agenda-time">10:20 - 10:40</td>
+              <td><b>Break</b></td>
+            </tr>
+            <tr>
+              <td class="agenda-time">10:40 - 12:00</td>
+              <td>tools.js</td>
+            </tr>
+            <tr>
+              <td class="agenda-time">12:00 - 14:00</td>
+              <td><b>Lunch with <a href="http://cheezburger.com/"><img src="asset/img/cheezburger-small.png" alt="Cheezburger"></a> by <a href="http://marinationmobile.com/"><img src="asset/img/marination.png" alt="Marination"></b></td>
+            </tr>
+            <tr>
+              <td class="agenda-time">14:00 - 15:30</td>
+              <td>robots.js</td>
+            </tr>
+            <tr>
+              <td class="agenda-time">15:30 - 16:00</td>
+              <td><b>Break</b></td>
+            </tr>
+            <tr>
+              <td class="agenda-time">16:00 - 17:30</td>
+              <td>fun.js</td>
+            </tr>
+            <tr>
+              <td class="agenda-time">17:30 - 18:00</td>
+              <td>Closing Keynote</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="agenda-party l-triple first">Skyfall at AMC Pacific 11</p>
+
+      </div>
+
+    </section>
+
+    <section>
+
+      <div class="sct-break"><h2 class="l-constrained sct-head" id="sponsors">Sponsors</h2></div>
+
+      <div class="l-constrained">
+
+        <div class="l-column clearfix sponsors">
+          <ul class="sponsors-large">
+            <li>
+              <a href="http://msdn.com/ie">
+                <img src="asset/img/ie.png" alt="Internet Explorer">
+              </a>
+            </li>
+            <li>
+              <a href="http://aka.ms/cascadiajs">
+                <img src="asset/img/azure.png" alt="Azure">
+              </a>
+            </li>
+            <li>
+              <a href="https://skydrive.live.com">
+                <img src="asset/img/skydrive.png" alt="SkyDrive">
+              </a>
+            </li>
+          </ul>
+          <ul class="sponsors-small">
+            <li>
+              <a href="https://saucelabs.com/">
+                <img src="asset/img/saucelabs.png" alt="Sauce Labs">
+              </a>
+            </li>
+            <li>
+              <a href="http://twilio.com">
+                <img src="asset/img/twilio.png" alt="Twilio">
+              </a>
+            </li>
+            <li>
+              <a href="http://cheezburger.com">
+                <img src="asset/img/cheezburger.png" alt="Cheezburger">
+              </a>
+            </li>
+            <li>
+              <a href="http://mandrill.com">
+                <img src="asset/img/mandrill.png" alt="Mandrill">
+              </a>
+            </li>
+            <li>
+              <a href="http://cloudant.com">
+                <img src="asset/img/cloudant.png" alt="Cloudant">
+              </a>
+            </li>
+            <li>
+              <a href="http://substantial.com/">
+                <img src="asset/img/substantial-small.png" alt="Substantial">
+              </a>
+            </li>
+          </ul>
+
+          <a class="sponsors-cta" href="mailto:info@cascadiajs.com"><span>Become a Sponsor</span></a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section>
+
+      <div class="sct-break"><h2 class="l-constrained sct-head" id="information">Information</h2></div>
+
+      <div class="l-constrained clearfix">
+
+        <nav class="l-single first">
+
+          <ul class="information-nav">
+            <li>
+              <a href="#location" class="active">
+                <h3 class="information-head">Location</h3>
+              </a>
+            </li>
+            <li>
+              <a href="#hotels">
+                <h3 class="information-head">Hotels</h3>
+              </a>
+            </li>
+            <li>
+              <a href="#parties">
+                <h3 class="information-head">Parties</h3>
+              </a>
+            </li>
+          </ul>
+
+        </nav>
+
+        <div class="l-double">
+
+          <section id="location" class="information-tab active">
+
+            <h3 class="visuallyhidden">Location</h3>
+
+            <div class="map">
+
+              <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=hub+seattle&amp;aq=&amp;sll=47.603848,-122.342377&amp;sspn=0.295377,0.545197&amp;ie=UTF8&amp;hq=hub+seattle&amp;hnear=&amp;t=m&amp;ll=47.604774,-122.330403&amp;spn=0.013021,0.021415&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
+
+            </div>
+
+          </section>
+
+          <section id="hotels" class="information-tab">
+
+            <h3 class="visuallyhidden">Hotels</h3>
+
+            <p>We've run around Seattle and located some good hotel options for people coming in from out of town. We do not have special rates (sorry) but feel free to book your rooms ASAP before they fill-up.  If any of you who are living in Seattle would be open to letting some friends from out of town crash on your couch (couchsurfing.js!) please let us know.  We're happy to connect people.</p>
+
+            <ul class="hotels">
+              <li><a href="http://www.marriott.com/hotels/travel/seaps-courtyard-seattle-downtown-pioneer-square/"><span class="hotels-name">Courtyard Seattle, 612 2nd Ave /</span> $149 - $189</a></li>
+              <li><a href="http://doubletree3.hilton.com/en/hotels/washington/the-arctic-club-seattle-a-doubletree-by-hilton-hotel-SEAACDT/index.html"><span class="hotels-name">Arctic Club, 700 3rd Ave /</span> 149.00 Single, 169.00 Double Queen Beds</a></li>
+              <li><a href="http://www.alexishotel.com/"><span class="hotels-name">Alexis Hotel, 1007 1st Ave /</span> 199.00 Per Night S/D beds</a></li>
+              <li><a href="http://www.marriott.com/hotels/travel/seasm-renaissance-seattle-hotel"><span class="hotels-name">Renaissance Seattle Hotel, 515 Madison St /</span> $249 Per Night</a></li>
+              <li><a href="http://www.pioneersquare.com/"><span class="hotels-name">Best Western, 77 Yesler Way /</span> 99.99 Kings, 109.99 Standard Doubles, 119.99 Deluxe Doubles</a></li>
+            </ul>
+
+          </section>
+
+          <section id="parties" class="information-tab">
+
+            <h3 class="visuallyhidden">Parties</h3>
+
+            <ul class="party-list">
+
+              <li>
+                <h4 class="party-head">Pre-Party / <span class="party-date">Wednesday</span></h4>
+                <ul>
+                  <li><b>Location:</b> Substantial HQ (900 E Pine Street Suite #202, Seattle, WA)</li>
+                  <li><b>Time:</b> 7:00 - 10:00pm</li>
+                  <li><b>Details:</b> Light appetizers, drinks and a DJ. Bring a +1!</li>
+                </ul>
+              </li>
+
+              <li>
+                <h4 class="party-head">Party / <span class="party-date">Thursday</span></h4>
+                <ul>
+                  <li><b>Location</b>: Tavern Law (1406 12th Avenue, Seattle, WA)</li>
+                  <li><b>Time</b>: 8:00 - 11:00pm</li>
+                  <li><b>Details</b>: Light appetizers and open bar. Sorry, no +1.</li>
+                </ul>
+              </li>
+
+              <li>
+                <h4 class="party-head">Movie Night / <span class="party-date">Friday</span></h4>
+                <ul>
+                  <li><b>Location</b>: AMC Pacific Place 11 (600 Pine Street #400, Seattle, WA)</li>
+                  <li><b>Time</b>: 7:15 - 9:30pm</li>
+                  <li><b>Details</b>: A private screening of Skyfall. Bring a +1!</li>
+                </ul>
+              </li>
+              <li>
+                <h4 class="party-head">After-Party / <span class="party-date">Friday</span></h4>
+                <ul>
+                  <li><b>Location</b>: Dragonfish Cafe (722 Pine Street, Seattle, WA)</li>
+                  <li><b>Time</b>: 9:30 - 11:00pm</li>
+                  <li><b>Details</b>: Sushi and drinks. Wear a Cloudant sticker to get on the tab.</li>
+                </ul>
+              </li>
+              <li>
+                <h4 class="party-head">Hangover Brunch / <span class="party-date">Saturday</span></h4>
+                <ul>
+                  <li><b>Location</b>: Portage Bay (391 Terry Ave N, Seattle, WA)</li>
+                  <li><b>Time</b>: 7:30am - 12:00pm</li>
+                  <li><b>Details</b>: No reserved tables, so show up early. Brunch is on us!</li>
+                </ul>
+              </li>
+            </ul>
+
+          </section>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="contacts">
+
+      <div class="sct-break"><h2 class="l-constrained sct-head" id="organizers">Organizers</h2></div>
+
+      <div class="l-constrained">
+
+        <ul class="l-column clearfix">
+          <li class="l-single">
+            <a href="https://twitter.com/CarterRabasa">
+              <img class="contacts-img inset" alt="" src="asset/img/carterrabasa.png">
+              <p class="lineup-name">Carter Rabasa</p>
+              <p class="lineup-text">Sponsor Whisperer</p>
+            </a>
+          </li>
+          <li class="l-single">
+            <a href="https://twitter.com/whereisciao">
+              <img class="contacts-img inset" alt="" src="asset/img/whereisciao.jpg">
+              <p class="lineup-name">Steven Chau</p>
+              <p class="lineup-text">Logistics Guru</p>
+            </a>
+          </li>
+          <li class="l-single">
+            <a href="https://twitter.com/thoward37">
+              <img class="contacts-img inset" alt="" src="asset/img/thoward37.jpg">
+              <p class="lineup-name">Troy Howard</p>
+              <p class="lineup-text">CFS Maestro</p>
+            </a>
+          </li>
+          <li class="l-single">
+            <a href="https://twitter.com/notmyself">
+              <img class="contacts-img inset" alt="" src="asset/img/bobby.png">
+              <p class="lineup-name">Bobby Johnson</p>
+              <p class="lineup-text">Gastro Scientist</p>
+            </a>
+          </li>
+          <li class="l-single">
+            <a href="https://twitter.com/alexlande">
+              <img class="contacts-img inset" alt="" src="asset/img/alexlande.png">
+              <p class="lineup-name">Alex Lande</p>
+              <p class="lineup-text">Web Magician</p>
+            </a>
+          </li>
+          <li class="l-single">
+            <a href="https://twitter.com/MarkCowlishaw">
+              <img class="contacts-img inset" alt="" src="asset/img/markcowlishaw.png">
+              <p class="lineup-name">Mark Cowlishaw</p>
+              <p class="lineup-text">Speaker Wrangler</p>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+
+    </section>
+
+    <section>
+      <div class="sct-break"><h2 class="l-constrained sct-head" id="community">Community</h2></div>
+      <div class="l-constrained clearfix">
+        <div class="l-github first">
+          <h3>Github</h3>
+          <div class="followers-wrapper">
+            <div class="followers clearfix"></div>
+          </div>
+        </div>
+        <div class="l-twitter">
+          <h3 >Twitter</h3>
+          <div class="tweets">
+            <div class="content_tweets">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="asset/js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+  <script src="asset/js/compiled/site.min.js"></script>
+
+  <script type="text/javascript" src="//use.typekit.net/tei1jch.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</body>
+</html>
